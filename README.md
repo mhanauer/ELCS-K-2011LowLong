@@ -162,8 +162,8 @@ genMCMC = function( data , xName="X" , x2Name = "X2", x3Name = "X3", x4Name = "X
   zbeta14mu ~ dnorm( 0 , 1/(10)^2 )
   zbeta15mu ~ dnorm( 0 , 1/(10)^2 )
   zbeta16mu ~ dnorm( 0 , 1/(10)^2 )
-
-
+  
+  
   zsigma ~ dnorm( 1.0E-3 , 1.0E+3 )
   zbeta0sigma ~ dunif( 1.0E-3 , 1.0E+3 )
   zbeta1sigma ~ dunif( 1.0E-3 , 1.0E+3 )
@@ -182,8 +182,8 @@ genMCMC = function( data , xName="X" , x2Name = "X2", x3Name = "X3", x4Name = "X
   zbeta14sigma ~ dunif( 1.0E-3 , 1.0E+3 )
   zbeta15sigma ~ dunif( 1.0E-3 , 1.0E+3 )
   zbeta16sigma ~ dunif( 1.0E-3 , 1.0E+3 )
-
-
+  
+  
   nu ~ dexp(1/30.0)
   # Transform to original scale:
   for ( j in 1:Nsubj ) {
@@ -221,8 +221,8 @@ genMCMC = function( data , xName="X" , x2Name = "X2", x3Name = "X3", x4Name = "X
   beta14mu <- zbeta14mu * ysd / x14sd
   beta15mu <- zbeta15mu * ysd / x15sd
   beta16mu <- zbeta16mu * ysd / x16sd
-
-
+  
+  
   beta0mu <- zbeta0mu * ysd  + ym - zbeta1mu * xm * ysd / xsd + zbeta2mu * x2m * ysd / x2sd + zbeta3mu * x3m * ysd / x3sd + zbeta4mu * x4m * ysd / x4sd + zbeta5mu * x5m * ysd / x5sd + zbeta6mu * x6m * ysd / x6sd + zbeta7mu * x7m * ysd / x7sd + zbeta8mu * x8m * ysd / x8sd + zbeta9mu * x9m * ysd / x9sd + zbeta10mu * x10m * ysd / x10sd + zbeta11mu * x11m * ysd / x11sd + zbeta12mu * x12m * ysd / x12sd + zbeta12mu * x12m * ysd / x12sd + zbeta13mu * x13m * ysd / x13sd + zbeta14mu * x14m * ysd / x14sd + zbeta15mu * x15m * ysd / x15sd + zbeta16mu * x16m * ysd / x16sd 
   sigma <- zsigma * ysd
   }
@@ -239,7 +239,7 @@ genMCMC = function( data , xName="X" , x2Name = "X2", x3Name = "X3", x4Name = "X
                   "zsigma", "sigma", "nu" , "zbeta0sigma" , "zbeta1sigma","zbeta2sigma", "zbeta3sigma", "zbeta4sigma" , "zbeta5sigma" , "zbeta6sigma" , "zbeta7sigma" , "zbeta8sigma" , "zbeta9sigma" , "zbeta10sigma" , "zbeta11sigma" , "zbeta12sigma", "zbeta13sigma" , "zbeta14sigma","zbeta15sigma", "zbeta16sigma")
   adaptSteps = 1000  # Number of steps to "tune" the samplers
   burnInSteps = 2000
-  runJagsOut <- run.jags( method=runjagsMethod ,
+  runJagsOut <- run.jags( method="parallel" ,
                           model="TEMPmodel.txt" , 
                           monitor=parameters , 
                           data=dataList ,  
