@@ -128,7 +128,7 @@ genMCMC = function( data , x10Name = "X10", x11Name = "X11", x12Name = "X12", x1
   beta17[j] <- zbeta17[j] * ysd / x17sd
   beta0[j] <- zbeta0[j] * ysd  + ym - zbeta10[j] * x10m * ysd / x10sd + zbeta11[j] * x11m * ysd / x11sd + zbeta12[j] * x12m * ysd / x12sd + ym - zbeta13[j] * x13m * ysd / x13sd + zbeta14[j] * x14m * ysd / x14sd + zbeta15[j] * x15m * ysd / x15sd + zbeta16[j] * x16m * ysd / x16sd + zbeta17[j] * x17m * ysd / x17sd 
   }
-
+  
   beta10mu <- zbeta10mu * ysd / x10sd
   beta11mu <- zbeta11mu * ysd / x11sd
   beta12mu <- zbeta12mu * ysd / x12sd
